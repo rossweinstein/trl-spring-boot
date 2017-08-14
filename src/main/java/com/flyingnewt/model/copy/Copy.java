@@ -1,6 +1,5 @@
 package com.flyingnewt.model.copy;
 
-import com.flyingnewt.model.patron.Patron;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
