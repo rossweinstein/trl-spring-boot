@@ -8,10 +8,9 @@ import javax.persistence.*;
 
 @Embeddable
 @Data
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
 public class Textbook {
 
-    @Id
     private String ISBN;
     private String title;
     private String subTitle;
@@ -19,6 +18,6 @@ public class Textbook {
     private String authorLast;
     private String publisher;
 
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     private Genre genre;
 }

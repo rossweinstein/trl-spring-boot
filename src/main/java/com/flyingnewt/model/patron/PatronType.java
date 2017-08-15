@@ -1,6 +1,6 @@
 package com.flyingnewt.model.patron;
 
 
-public enum PatronStatus {
+public enum PatronType {
     UNDERGRAD_STUDENT, GRADUATE_STUDENT, FACULTY, STAFF;
 }

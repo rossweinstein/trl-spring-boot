@@ -4,28 +4,38 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Entity
 @Data
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
 public class Copy {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     @Embedded
     private Textbook book;
-    @Temporal(TemporalType.DATE)
-    private Date dueDate;
+    private LocalDateTime dueDate;
     private long lastPatronToCheckOutId;
 
-    public void checkOut(long patronID, Date dueDate) {
+    public void checkOut(long patronID, LocalDateTime dueDate) {
         this.dueDate = dueDate;
         this.lastPatronToCheckOutId = patronID;
+        this.lastPatronToCheckOutId = -1;
     }
 
-    public void checkIn() {
+    public boolean isAvailable() {
+        return this.dueDate == null;
+    }
+
+    public void checkedOut(long patronId) {
+        this.lastPatronToCheckOutId = patronId;
+        this.dueDate = LocalDateTime.now().plusDays(100);
+    }
+
+    public void checkedIn() {
         this.dueDate = null;
     }
 }
