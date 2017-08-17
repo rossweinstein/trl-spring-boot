@@ -2,7 +2,6 @@ package com.flyingnewt;
 
 import com.flyingnewt.model.copy.Copy;
 import com.flyingnewt.model.patron.Patron;
-import com.flyingnewt.model.patron.personalInformation.PhoneNumber;
 import com.flyingnewt.repositories.CopyRepository;
 import com.flyingnewt.repositories.PatronRepository;
 import org.springframework.beans.factory.annotation.Autowired;

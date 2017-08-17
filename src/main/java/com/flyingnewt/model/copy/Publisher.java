@@ -1,16 +1,29 @@
 package com.flyingnewt.model.copy;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.flyingnewt.model.contact.ContactInformation;
+import lombok.*;
+
+import javax.persistence.*;
 
 @Entity
+@Getter @Setter
+@EqualsAndHashCode
+@ToString
 public class Publisher {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    private String companyName;
 
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private ContactInformation contact;
+
+    public Publisher() {}
+
+    public Publisher(String companyName, ContactInformation contact) {
+        this.companyName = companyName;
+        this.contact = contact;
+    }
 }

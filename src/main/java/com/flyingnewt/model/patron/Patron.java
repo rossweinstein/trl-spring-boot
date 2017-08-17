@@ -1,7 +1,7 @@
 package com.flyingnewt.model.patron;
 
 import com.flyingnewt.model.copy.Copy;
-import com.flyingnewt.model.patron.personalInformation.PersonalInformation;
+import com.flyingnewt.model.contact.ContactInformation;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -20,7 +20,7 @@ public class Patron {
     private long patronId;
 
     @Embedded
-    private PersonalInformation contactInfo;
+    private ContactInformation contactInfo;
 
     @Enumerated(EnumType.STRING)
     private PatronType type;
@@ -30,7 +30,7 @@ public class Patron {
     joinColumns = {@JoinColumn(name = "patron_id")}, inverseJoinColumns = {@JoinColumn(name = "copy_id")})
     private List<Copy> copiesOut;
 
-    public Patron(PersonalInformation contact, PatronType type) {
+    public Patron(ContactInformation contact, PatronType type) {
         this.contactInfo = contact;
         this.type = type;
         this.copiesOut = new ArrayList<>();

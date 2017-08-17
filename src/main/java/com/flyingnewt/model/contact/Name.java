@@ -1,4 +1,4 @@
-package com.flyingnewt.model.patron.personalInformation;
+package com.flyingnewt.model.contact;
 
 import lombok.Data;
 
