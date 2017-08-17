@@ -17,7 +17,7 @@ public class Patron {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private long patronId;
 
     @Embedded
     private PersonalInformation contactInfo;
@@ -25,7 +25,9 @@ public class Patron {
     @Enumerated(EnumType.STRING)
     private PatronType type;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "COPIES_OUT",
+    joinColumns = {@JoinColumn(name = "patron_id")}, inverseJoinColumns = {@JoinColumn(name = "copy_id")})
     private List<Copy> copiesOut;
 
     public Patron(PersonalInformation contact, PatronType type) {
@@ -45,7 +47,7 @@ public class Patron {
     }
 
     private boolean patronChecksOutCopy(Copy c) {
-        c.checkedOut(this.getId());
+        c.checkedOut(this.getPatronId());
         return this.copiesOut.add(c);
     }
 
