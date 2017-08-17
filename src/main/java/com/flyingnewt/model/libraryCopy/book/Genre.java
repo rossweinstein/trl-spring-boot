@@ -1,4 +1,4 @@
-package com.flyingnewt.model.copy;
+package com.flyingnewt.model.libraryCopy.book;
 
 /**
  * Created by rweinstein on 8/14/17.

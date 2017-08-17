@@ -1,6 +1,6 @@
-package com.flyingnewt.model.copy;
+package com.flyingnewt.model.libraryCopy.book;
 
-import com.flyingnewt.model.contact.Name;
+import com.flyingnewt.model.contactInformation.Name;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;

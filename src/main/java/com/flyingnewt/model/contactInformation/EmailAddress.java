@@ -1,4 +1,4 @@
-package com.flyingnewt.model.contact;
+package com.flyingnewt.model.contactInformation;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -19,7 +19,7 @@ public class EmailAddress {
     }
 
     public EmailAddress(String email) {
-        this.email = this.validateEmail(email);
+        this.email = email;
     }
 
     public String getEmail() {

@@ -1,5 +1,6 @@
-package com.flyingnewt.model.contact;
+package com.flyingnewt.model.contactInformation;
 
+import com.flyingnewt.model.contactInformation.Address.Address;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;

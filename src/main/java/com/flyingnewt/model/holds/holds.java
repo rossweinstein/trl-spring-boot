@@ -1,13 +1,11 @@
 package com.flyingnewt.model.holds;
 
-import com.flyingnewt.model.copy.Copy;
+import com.flyingnewt.model.libraryCopy.Copy;
 import com.flyingnewt.model.patron.Patron;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.hibernate.FetchMode;
-import org.hibernate.service.spi.InjectService;
 
 import javax.persistence.*;
 

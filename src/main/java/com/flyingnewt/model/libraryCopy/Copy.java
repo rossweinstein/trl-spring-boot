@@ -1,9 +1,9 @@
-package com.flyingnewt.model.copy;
+package com.flyingnewt.model.libraryCopy;
 
+import com.flyingnewt.model.libraryCopy.book.Book;
 import lombok.*;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity(name = "copy")
@@ -15,7 +15,7 @@ public class Copy {
     @Column(name = "copy_id")
     private long id;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "book_id")
     private Book book;
 

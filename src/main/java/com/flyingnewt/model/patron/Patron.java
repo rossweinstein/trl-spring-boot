@@ -1,8 +1,8 @@
 package com.flyingnewt.model.patron;
 
-import com.flyingnewt.model.contact.Name;
-import com.flyingnewt.model.copy.Copy;
-import com.flyingnewt.model.contact.ContactInformation;
+import com.flyingnewt.model.contactInformation.Name;
+import com.flyingnewt.model.libraryCopy.Copy;
+import com.flyingnewt.model.contactInformation.ContactInformation;
 import lombok.*;
 
 import javax.persistence.*;
@@ -18,11 +18,11 @@ public class Patron {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long patronId;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "name_id")
     private Name name;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "contact_id")
     private ContactInformation contactInfo;
 

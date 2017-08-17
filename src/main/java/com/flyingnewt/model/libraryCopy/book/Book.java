@@ -1,4 +1,4 @@
-package com.flyingnewt.model.copy;
+package com.flyingnewt.model.libraryCopy.book;
 
 import lombok.*;
 
@@ -25,7 +25,7 @@ public class Book {
 
     private String title;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "publisher_id")
     private Publisher publisher;
 

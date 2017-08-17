@@ -1,14 +1,13 @@
-package com.flyingnewt.model.copy;
+package com.flyingnewt.model.libraryCopy.book;
 
-import com.flyingnewt.model.contact.ContactInformation;
+import com.flyingnewt.model.contactInformation.ContactInformation;
 import lombok.*;
 
 import javax.persistence.*;
 
-@Entity
+@Entity(name = "publisher")
 @Getter @Setter
-@EqualsAndHashCode
-@ToString
+@EqualsAndHashCode @ToString
 public class Publisher {
 
     @Id

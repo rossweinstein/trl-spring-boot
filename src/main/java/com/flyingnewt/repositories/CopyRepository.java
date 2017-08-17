@@ -1,11 +1,14 @@
 package com.flyingnewt.repositories;
 
-import com.flyingnewt.model.copy.Copy;
+import com.flyingnewt.model.libraryCopy.Copy;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.CrudRepository;
+
+import java.util.List;
 
 /**
  * Created by rweinstein on 8/16/17.
  */
 public interface CopyRepository extends JpaRepository<Copy, Long> {
+
+    List<Copy> findByDamagedIsFalse ();
 }

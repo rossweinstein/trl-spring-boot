@@ -1,13 +1,17 @@
-package com.flyingnewt.model.contact;
+package com.flyingnewt.model.contactInformation;
 
-import com.sun.tools.javah.Gen;
-import lombok.*;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 
 @Entity(name = "name")
-@Getter @Setter
-@EqualsAndHashCode @ToString
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
 public class Name {
 
     @Id

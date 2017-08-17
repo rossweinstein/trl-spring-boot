@@ -1,4 +1,4 @@
-package com.flyingnewt.model.contact;
+package com.flyingnewt.model.contactInformation.Address;
 
 /**
  * Created by rweinstein on 8/14/17.

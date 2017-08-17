@@ -1,12 +1,9 @@
-package com.flyingnewt.model.contact;
+package com.flyingnewt.model.contactInformation.Address;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.*;
 
 @Embeddable
 @EqualsAndHashCode
@@ -79,4 +76,6 @@ public class Address {
     private boolean isValidZipCode(String zipCode) {
         return zipCode.length() == 5 || zipCode.length() == 9 && zipCode.chars().allMatch(Character::isDigit);
     }
+
+
 }
