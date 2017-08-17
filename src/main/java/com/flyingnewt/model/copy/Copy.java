@@ -15,6 +15,7 @@ public class Copy {
     @Column(name = "copy_id")
     private long id;
 
+    @OneToOne(fetch = FetchType.LAZY)
     @Column(name = "book_id")
     private Book book;
 

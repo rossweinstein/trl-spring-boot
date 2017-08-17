@@ -3,6 +3,7 @@ package com.flyingnewt.model.contact;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -17,6 +18,7 @@ public class Address {
     private String city;
     @Enumerated(EnumType.STRING)
     private USState state;
+    @Column(name = "zip_code")
     private String zipCode;
 
     public Address() {}

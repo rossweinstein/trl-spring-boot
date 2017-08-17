@@ -1,38 +1,46 @@
 package com.flyingnewt.model.patron;
 
+import com.flyingnewt.model.contact.Name;
 import com.flyingnewt.model.copy.Copy;
 import com.flyingnewt.model.contact.ContactInformation;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
+@Entity(name = "patron")
 @Getter @Setter
-@NoArgsConstructor
+@EqualsAndHashCode @ToString
 public class Patron {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long patronId;
 
-    @Embedded
+    @OneToOne(fetch = FetchType.LAZY)
+    @Column(name = "name_id")
+    private Name name;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @Column(name = "contact_id")
     private ContactInformation contactInfo;
 
-    @Enumerated(EnumType.STRING)
-    private PatronType type;
-
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "COPIES_OUT",
-    joinColumns = {@JoinColumn(name = "patron_id")}, inverseJoinColumns = {@JoinColumn(name = "copy_id")})
+    joinColumns = {@JoinColumn(name = "patron_id")},
+            inverseJoinColumns = {@JoinColumn(name = "copy_id")})
     private List<Copy> copiesOut;
 
-    public Patron(ContactInformation contact, PatronType type) {
+    public Patron() {
+        this.name = new Name();
+        this.contactInfo = new ContactInformation();
+        this.copiesOut = new ArrayList<>();
+    }
+
+    public Patron(Name name, ContactInformation contact) {
+        this.name = name;
         this.contactInfo = contact;
-        this.type = type;
         this.copiesOut = new ArrayList<>();
     }
 

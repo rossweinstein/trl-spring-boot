@@ -1,4 +1,4 @@
-
+/*
 SET FOREIGN_KEY_CHECKS = 0;
 TRUNCATE `textbook_rental_library`.`patron`;
 TRUNCATE `textbook_rental_library`.`copy`;
@@ -44,3 +44,4 @@ VALUES
   (null, 'newt_kitty@gmail.com', 'Other City', '5856 Newton Lane', 'Apt. 94', 'MN', '55418', 'Newt',
          'Weinstein', 'Kitty', 'Some City', '1234 King Ave', '', 'MN', '55436', '6517654321', 'STAFF');
 
+*/

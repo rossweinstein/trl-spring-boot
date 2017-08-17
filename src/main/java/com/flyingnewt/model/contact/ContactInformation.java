@@ -1,17 +1,21 @@
 package com.flyingnewt.model.contact;
 
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
 
 @Entity(name = "contact")
-@EqualsAndHashCode
-@ToString
+@Getter @Setter
+@EqualsAndHashCode @ToString
 public class ContactInformation {
 
-    @OneToOne(fetch = FetchType.LAZY)
-    private Name name;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "contact_id")
+    private long id;
 
     @Embedded
     private Address mailingAddress;
@@ -22,44 +26,15 @@ public class ContactInformation {
     @Embedded
     private EmailAddress emailAddress;
 
-    public ContactInformation() {}
+    public ContactInformation() {
+        this.mailingAddress = new Address();
+        this.phoneNumber = new PhoneNumber();
+        this.emailAddress = new EmailAddress();
+    }
 
-    public ContactInformation(Name name, Address mailingAddress, PhoneNumber phoneNumber, EmailAddress emailAddress) {
-        this.name = name;
+    public ContactInformation(Address mailingAddress, PhoneNumber phoneNumber, EmailAddress emailAddress) {
         this.mailingAddress = mailingAddress;
         this.phoneNumber = phoneNumber;
-        this.emailAddress = emailAddress;
-    }
-
-    public Name getName() {
-        return name;
-    }
-
-    public void setName(Name name) {
-        this.name = name;
-    }
-
-    public Address getMailingAddress() {
-        return mailingAddress;
-    }
-
-    public void setMailingAddress(Address mailingAddress) {
-        this.mailingAddress = mailingAddress;
-    }
-
-    public PhoneNumber getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(PhoneNumber phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public EmailAddress getEmailAddress() {
-        return emailAddress;
-    }
-
-    public void setEmailAddress(EmailAddress emailAddress) {
         this.emailAddress = emailAddress;
     }
 }
