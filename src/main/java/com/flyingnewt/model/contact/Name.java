@@ -1,15 +1,13 @@
 package com.flyingnewt.model.contact;
 
 import com.sun.tools.javah.Gen;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity(name = "name")
-@EqualsAndHashCode
-@ToString
+@Getter @Setter
+@EqualsAndHashCode @ToString
 public class Name {
 
     @Id
@@ -39,38 +37,6 @@ public class Name {
     public Name(String firstName, String middleName, String lastName) {
         this.firstName = firstName;
         this.middleName = middleName;
-        this.lastName = lastName;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getMiddleName() {
-        return middleName;
-    }
-
-    public void setMiddleName(String middleName) {
-        this.middleName = middleName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 }

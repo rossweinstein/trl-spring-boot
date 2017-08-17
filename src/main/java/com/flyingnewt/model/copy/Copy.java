@@ -1,37 +1,49 @@
 package com.flyingnewt.model.copy;
 
-import lombok.AccessLevel;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Date;
 
-@Entity(name = "COPY")
-@Data
-@NoArgsConstructor
+@Entity(name = "copy")
+@Getter @Setter
+@EqualsAndHashCode @ToString
 public class Copy {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "COPY_ID")
+    @Column(name = "copy_id")
     private long id;
-    @Embedded
-    private Textbook book;
-    private LocalDateTime dueDate;
-    @Column(name = "LAST_TO_CHECK_OUT")
-    private long lastPatronToCheckOutId;
 
-    public Copy(Textbook book, LocalDateTime dueDate, long lastPatronToCheckOutId) {
-        this.book = book;
-        this.dueDate = dueDate;
-        this.lastPatronToCheckOutId = lastPatronToCheckOutId;
+    @Column(name = "book_id")
+    private Book book;
+
+    @Temporal(TemporalType.DATE)
+    @Column(name = "due_date")
+    private Date dueDate;
+
+    private boolean damaged;
+    private boolean lost;
+    private boolean sold;
+
+    public Copy() {
+        this.book = null;
+        this.dueDate = null;
+        this.damaged = false;
+        this.lost = false;
+        this.sold = false;
     }
 
-    public void checkOut(long patronID, LocalDateTime dueDate) {
+    public Copy(Book book, Date dueDate) {
+        this.book = book;
         this.dueDate = dueDate;
-        this.lastPatronToCheckOutId = patronID;
-        this.lastPatronToCheckOutId = -1;
+        this.damaged = false;
+        this.lost = false;
+        this.sold = false;
+    }
+
+    public void checkOut(long patronID, Date dueDate) {
+        this.dueDate = dueDate;
     }
 
     public boolean isAvailable() {
@@ -39,8 +51,7 @@ public class Copy {
     }
 
     public void checkedOut(long patronId) {
-        this.lastPatronToCheckOutId = patronId;
-        this.dueDate = LocalDateTime.now().plusDays(100);
+        this.dueDate = new Date();
     }
 
     public void checkedIn() {

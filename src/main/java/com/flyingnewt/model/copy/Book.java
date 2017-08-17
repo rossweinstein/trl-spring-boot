@@ -8,7 +8,7 @@ import javax.persistence.*;
 
 @Embeddable
 @Data
-public class Textbook {
+public class Book {
 
     private String ISBN;
     private String title;
@@ -20,9 +20,9 @@ public class Textbook {
     @Enumerated(EnumType.STRING)
     private Genre genre;
 
-    public Textbook() {}
+    public Book() {}
 
-    public Textbook(String ISBN, String title, String subTitle, String authorFirst, String authorLast, String publisher, Genre genre) {
+    public Book(String ISBN, String title, String subTitle, String authorFirst, String authorLast, String publisher, Genre genre) {
         this.ISBN = ISBN;
         this.title = title;
         this.subTitle = subTitle;

@@ -10,7 +10,7 @@ import javax.persistence.*;
 @ToString
 public class ContactInformation {
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     private Name name;
 
     @Embedded
@@ -22,8 +22,7 @@ public class ContactInformation {
     @Embedded
     private EmailAddress emailAddress;
 
-    public ContactInformation() {
-    }
+    public ContactInformation() {}
 
     public ContactInformation(Name name, Address mailingAddress, PhoneNumber phoneNumber, EmailAddress emailAddress) {
         this.name = name;

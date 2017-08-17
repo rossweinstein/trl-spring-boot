@@ -1,8 +1,13 @@
 package com.flyingnewt.model.contact;
 
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+
 import javax.persistence.Embeddable;
 
 @Embeddable
+@EqualsAndHashCode
+@ToString
 public class PhoneNumber {
 
     private String number;
@@ -11,16 +16,16 @@ public class PhoneNumber {
         this.number = "";
     }
 
+    public PhoneNumber(String phoneNumber) {
+        this.number = this.isValidPhoneNumber(phoneNumber) ? phoneNumber : "";
+    }
+
     public String getNumber() {
         return number;
     }
 
     public void setNumber(String number) {
         this.number = this.isValidPhoneNumber(number) ? number : "";
-    }
-
-    public PhoneNumber(String phoneNumber) {
-        this.number = this.isValidPhoneNumber(phoneNumber) ? phoneNumber : "";
     }
 
     public String getFormattedTelephoneNumber() {
