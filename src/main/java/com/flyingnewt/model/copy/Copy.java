@@ -16,7 +16,7 @@ public class Copy {
     private long id;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @Column(name = "book_id")
+    @JoinColumn(name = "book_id")
     private Book book;
 
     @Temporal(TemporalType.DATE)

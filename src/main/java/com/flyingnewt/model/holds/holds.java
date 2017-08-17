@@ -22,11 +22,11 @@ public class holds {
     private Long id;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @Column(name = "patron_id")
+    @JoinColumn(name = "patron_id")
     private Patron offending_patron;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @Column(name = "copy_id")
+    @JoinColumn(name = "copy_id")
     private Copy copy;
 
     @Enumerated(EnumType.STRING)

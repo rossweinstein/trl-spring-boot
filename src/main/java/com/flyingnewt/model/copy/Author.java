@@ -19,7 +19,7 @@ public class Author {
     private long id;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @Column(name = "name_id")
+    @JoinColumn(name = "name_id")
     private Name name;
 
     public Author() {

@@ -26,7 +26,7 @@ public class Book {
     private String title;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @Column(name = "publisher_id")
+    @JoinColumn(name = "publisher_id")
     private Publisher publisher;
 
     @Enumerated(EnumType.STRING)

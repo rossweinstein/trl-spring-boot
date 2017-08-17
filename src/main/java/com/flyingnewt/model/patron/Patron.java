@@ -19,11 +19,11 @@ public class Patron {
     private long patronId;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @Column(name = "name_id")
+    @JoinColumn(name = "name_id")
     private Name name;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @Column(name = "contact_id")
+    @JoinColumn(name = "contact_id")
     private ContactInformation contactInfo;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
