@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `publisher` (
   `contact` bigint(20) NOT NULL,
   PRIMARY KEY (`publisher_id`),
   KEY `contact_id_idx` (`contact`),
-  CONSTRAINT `contact_id` FOREIGN KEY (`contact`) REFERENCES `contact` (`contact_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `contact_id` FOREIGN KEY (`contact`) REFERENCES `contact` (`contact_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 

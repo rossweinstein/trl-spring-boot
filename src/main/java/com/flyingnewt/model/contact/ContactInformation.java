@@ -1,25 +1,19 @@
 package com.flyingnewt.model.contact;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import javax.persistence.*;
 
-@Embeddable
-@Data
-@NoArgsConstructor
+@Entity(name = "contact")
+@EqualsAndHashCode
+@ToString
 public class ContactInformation {
 
-    @Embedded
+    @OneToOne
     private Name name;
 
     @Embedded
-    @AttributeOverrides({
-            @AttributeOverride(name = "line1", column = @Column(name = "address_line1")),
-            @AttributeOverride(name = "line2", column = @Column(name = "address_line2")),
-            @AttributeOverride(name = "city", column = @Column(name = "address_city")),
-            @AttributeOverride(name = "state", column = @Column(name = "address_state")),
-            @AttributeOverride(name = "zipCode", column = @Column(name = "address_zip_code"))})
     private Address mailingAddress;
 
     @Embedded
@@ -27,4 +21,46 @@ public class ContactInformation {
 
     @Embedded
     private EmailAddress emailAddress;
+
+    public ContactInformation() {
+    }
+
+    public ContactInformation(Name name, Address mailingAddress, PhoneNumber phoneNumber, EmailAddress emailAddress) {
+        this.name = name;
+        this.mailingAddress = mailingAddress;
+        this.phoneNumber = phoneNumber;
+        this.emailAddress = emailAddress;
+    }
+
+    public Name getName() {
+        return name;
+    }
+
+    public void setName(Name name) {
+        this.name = name;
+    }
+
+    public Address getMailingAddress() {
+        return mailingAddress;
+    }
+
+    public void setMailingAddress(Address mailingAddress) {
+        this.mailingAddress = mailingAddress;
+    }
+
+    public PhoneNumber getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(PhoneNumber phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public EmailAddress getEmailAddress() {
+        return emailAddress;
+    }
+
+    public void setEmailAddress(EmailAddress emailAddress) {
+        this.emailAddress = emailAddress;
+    }
 }

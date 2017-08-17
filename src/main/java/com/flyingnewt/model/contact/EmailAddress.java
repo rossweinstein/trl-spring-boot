@@ -1,10 +1,15 @@
 package com.flyingnewt.model.contact;
 
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.persistence.Embeddable;
 
 @Embeddable
+@EqualsAndHashCode
+@ToString
 public class EmailAddress {
 
     private String email;
