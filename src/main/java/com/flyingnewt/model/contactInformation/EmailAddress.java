@@ -3,13 +3,12 @@ package com.flyingnewt.model.contactInformation;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
-import javax.mail.internet.AddressException;
-import javax.mail.internet.InternetAddress;
 import javax.persistence.Embeddable;
+import java.lang.reflect.Array;
+import java.util.Arrays;
 
 @Embeddable
-@EqualsAndHashCode
-@ToString
+@EqualsAndHashCode @ToString
 public class EmailAddress {
 
     private String email;
@@ -19,7 +18,7 @@ public class EmailAddress {
     }
 
     public EmailAddress(String email) {
-        this.email = email;
+        this.email = this.validateEmail(email);
     }
 
     public String getEmail() {
@@ -27,7 +26,9 @@ public class EmailAddress {
     }
 
     public void setEmail(String email) {
-        this.email = this.validateEmail(email);
+        if (this.isEmailValid(email)) {
+            this.email = email;
+        }
     }
 
     private String validateEmail(String email) {
@@ -35,15 +36,7 @@ public class EmailAddress {
     }
 
     private boolean isEmailValid(String email) {
-
-        try {
-            InternetAddress theEmailAddress = new InternetAddress(email);
-            theEmailAddress.validate();
-            return true;
-        } catch (AddressException e) {
-            System.out.println("Bad Email");
-        }
-
-        return false;
+        String[] parts = email.split("@");
+        return parts.length == 2 && parts[1].split("\\.").length == 2;
     }
 }

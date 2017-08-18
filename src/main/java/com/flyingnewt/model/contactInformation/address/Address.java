@@ -1,4 +1,4 @@
-package com.flyingnewt.model.contactInformation.Address;
+package com.flyingnewt.model.contactInformation.address;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;

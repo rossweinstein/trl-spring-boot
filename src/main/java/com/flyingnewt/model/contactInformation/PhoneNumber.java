@@ -25,7 +25,10 @@ public class PhoneNumber {
     }
 
     public void setNumber(String number) {
-        this.number = this.isValidPhoneNumber(number) ? number : "";
+
+        if (this.isValidPhoneNumber(number)) {
+            this.number = number;
+        }
     }
 
     public String getFormattedTelephoneNumber() {
