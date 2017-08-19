@@ -24,7 +24,7 @@ public class PhoneNumberTest {
     @Test
     public void emptyPhoneNumberIsBlankString() {
         PhoneNumber emptyPhoneNumber = new PhoneNumber();
-        assertThat(emptyPhoneNumber.getNumber()).isEqualTo(new String());
+        assertThat(emptyPhoneNumber.getNumber()).isEqualTo("");
     }
 
     @Test
@@ -36,6 +36,12 @@ public class PhoneNumberTest {
     public void cannotResetValidPhoneNumberAsInvalidOne() {
         this.validPhoneNumber.setNumber("234");
         assertThat(this.validPhoneNumber.getNumber()).isEqualTo("6511234567");
+    }
+
+    @Test
+    public void canResetValidPhoneNumberToNewValidOne() {
+        this.validPhoneNumber.setNumber("2345439876");
+        assertThat(this.validPhoneNumber.getNumber()).isEqualTo("2345439876");
     }
 
     @Test

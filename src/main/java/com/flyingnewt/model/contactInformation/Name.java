@@ -8,10 +8,8 @@ import lombok.ToString;
 import javax.persistence.*;
 
 @Entity(name = "name")
-@Getter
-@Setter
-@EqualsAndHashCode
-@ToString
+@Getter @Setter
+@EqualsAndHashCode @ToString
 public class Name {
 
     @Id
@@ -25,10 +23,28 @@ public class Name {
     private String lastName;
 
     public String getFullName() {
+        if (this.hasFullName()) {
+            return this.formattedFullName();
+        } else if (this.hasFirstAndLast()) {
+            return this.formattedFirstAndLast();
+        } else {
+            return "";
+        }
+    }
+
+    private boolean hasFullName() {
+        return !this.firstName.isEmpty()&& !this.middleName.isEmpty() && !this.lastName.isEmpty();
+    }
+
+    private boolean hasFirstAndLast() {
+        return !this.firstName.isEmpty() && this.middleName.isEmpty() && !this.lastName.isEmpty();
+    }
+
+    private String formattedFullName() {
         return String.format("%s %s %s", this.firstName, this.middleName, this.lastName);
     }
 
-    public String getFirstAndLast() {
+    private String formattedFirstAndLast() {
         return String.format("%s %s", this.firstName, this.lastName);
     }
 
@@ -41,6 +57,12 @@ public class Name {
     public Name(String firstName, String middleName, String lastName) {
         this.firstName = firstName;
         this.middleName = middleName;
+        this.lastName = lastName;
+    }
+
+    public Name(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.middleName = "";
         this.lastName = lastName;
     }
 }

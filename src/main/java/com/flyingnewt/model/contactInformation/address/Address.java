@@ -76,6 +76,4 @@ public class Address {
     private boolean isValidZipCode(String zipCode) {
         return zipCode.length() == 5 || zipCode.length() == 9 && zipCode.chars().allMatch(Character::isDigit);
     }
-
-
 }
